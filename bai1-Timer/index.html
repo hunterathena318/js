@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>timer</title>
+</head>
+<body>
+    <p id="demo"></p>
+    <form action="#">
+        <input  id="timer" type="text" value=""><br>
+        <button type="submit" onclick="Count()">Count</button>
+    </form>
+    <script>
+        function Count(){
+
+            var count = setInterval(Run,1000);
+        function Run(){
+        var now = new Date().getTime();
+        var future = document.getElementById("timer").value;
+        var x = new Date(future).getTime();
+        var result = x - now;
+        var days = Math.floor(result / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((result % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((result % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((result % (1000 * 60)) / 1000);
+        document.getElementById("demo").innerHTML = days + " Ngày " + hours + " Giờ " + minutes + " Phút " + seconds + " Giây "; 
+        if(result < 0){
+            clearInterval(count);
+            document.getElementById("demo").innerHTML = "KET THUC !";
+                 }     
+            }
+        }
+    </script>
+</body>
+</html>
